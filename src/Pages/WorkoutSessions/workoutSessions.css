@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+
+
+.workout-complete{
+    /* width: 100vw;
+    height: 100vh;
+    padding : 3rem;
+    display: grid;
+    align-items: center;
+    justify-content: center; */
+    position: relative;
+}
+.competed-button{
+    /* background-color: var( --color-notice1);
+    color: var(--color3);
+    border: 1px solid var(--button-background);
+    padding: 0.2rem 0.7rem;
+    border-radius: 3px;
+    transition: all 0.5s;
+    transform: translate(50%, -0);
+    left: 50%;
+    position: absolute;
+    white-space: nowrap; */
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 5rem;
+      background-color: var( --color-notice1);
+      color: var(--color3);
+      padding: 10px 20px;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+}

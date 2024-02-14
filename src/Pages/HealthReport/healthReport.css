@@ -1,0 +1,21 @@
+.health-report {
+    padding: var(--page-padding);
+    box-sizing: border-box;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .chart-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .health-report {
+      grid-template-columns: 1fr;
+    }
+  }
+  

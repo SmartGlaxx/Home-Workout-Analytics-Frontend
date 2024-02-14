@@ -1,0 +1,10 @@
+
+
+
+.workout-image{
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 5px;
+    /* margin-left: 2rem; */
+}
