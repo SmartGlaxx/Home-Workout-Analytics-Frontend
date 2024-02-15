@@ -4,6 +4,7 @@ import { WorkoutData } from '../../Utils/data';
 import { DummyWorkoutData } from '../../Utils/data';
 import { UseAppContext } from '../../Contexts/app-context';
 import "./workoutSessions.css"
+import { Backdrop, Sidebar, Topbar } from '../../Components';
 
 const WorkoutSessions = () => {
     const { category } = useParams();
@@ -66,8 +67,11 @@ const WorkoutSessions = () => {
         }
     }, [timer, currentExerciseIndex, currentWorkouts]);
 
-//    console.log(currentUserParsed)
-    return (
+
+    return (<>
+        <Topbar />
+        <Sidebar />
+        <Backdrop />
         <div>
             {currentExercise ? (
                 <div>
@@ -97,14 +101,8 @@ const WorkoutSessions = () => {
                     <Link to={`/record-body-metrics/${id}`} ><button className="competed-button">Record Body Metrics</button></Link>
                 </div>
             )}
-            {/* <div className='workout-complete'>
-                <div>
-                    <h4>Workout Completed</h4>
-                    <Link to={`/record-body-metrics/${id}`} ><button className="competed-button">Record Body Metrics</button></Link>
-                </div>
-            </div> */}
         </div>
-    );
+    </>);
 };
 
 export default WorkoutSessions;

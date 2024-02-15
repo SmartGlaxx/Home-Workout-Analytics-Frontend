@@ -1,18 +1,20 @@
+
 .homepage{
     background-color: var(--background-color-8);
     color: var(--color);
     font-style: normal;
     width: 99vw;
-    min-height: calc(100vh - 4rem);
-    margin-top: 4rem;
+    min-height: 100vh;
     padding: var(--page-padding);
     box-sizing: border-box;
+    position: absolute;
+    top:0;
+    left:0;
+    margin-top: 4rem;
 }
 
 .workout-category{
     margin: var(--section-margin);
-    /* display: flex;
-    flex-direction: row; */
     align-items: center;
 }
 
@@ -20,27 +22,16 @@
     display: flex;
     overflow: auto;
     margin-top: 4rem;
-    /* width: 100vw; */
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    grid-gap: 1rem */
 }
 
 .workout-item{
     margin: 3rem;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 .workout-item h6{
     color: var(--color);
 }
 .workout-item div{
     color: var(--color);
-    /* background-color: green; */
-    /* display: flex;
-  justify-content: center;
-  align-items: center; */
   
 }
 .workout-image{
@@ -48,7 +39,6 @@
     height: 15rem;
     object-fit: cover;
     border-radius: 5px;
-    /* margin-left: 2rem; */
 }
 
 .start-button{

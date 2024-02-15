@@ -1,16 +1,22 @@
 .health-report {
     padding: var(--page-padding);
     box-sizing: border-box;
-    width: 100vw;
+    min-height: 100vh;
+    max-height: auto;
+    min-width: 100vw;
+    max-width: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    background: var(--background-color-8);
   }
   
   .chart-container {
+    margin-top: 4rem;
     border: 1px solid #ddd;
     padding: 20px;
     text-align: center;
+    background-color: white;
   }
   
   @media (max-width: 768px) {

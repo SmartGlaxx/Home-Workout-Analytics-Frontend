@@ -7,8 +7,8 @@ const Workout = () => {
   const {exercises} = WorkoutData
   const exercise = exercises.filter(workout => workout.id == id)
   
- const {name, category, intensity, duration, caloriesBurnt,
-   equipment, description, image, video} = exercise[0]
+ const {name, category, intensity, duration, caloriesBurnt, 
+  description, image, video} = exercise[0]
  
   return (
     <div> 

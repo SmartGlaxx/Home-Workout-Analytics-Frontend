@@ -1,10 +1,10 @@
-
 .topbarContainer{
     background: var(--background-color-2);
     height:  4rem;
     display: flex;
     place-items: center;
     top:0;
+    left: 0;
     position: fixed;
     z-index: 10;
     box-shadow:
@@ -16,72 +16,21 @@
 ;
 
 }
-.mainlogo-link{
-    text-decoration: none;
-    font-weight: 900;
-}
 
 .topLeft{
     flex: 3;
     margin-left: 2rem;
     display: flex;
-    /* justify-content: space-around; */
     align-items: center;
 }
-.topLeft-inner{
-    display: flex; 
-    justify-content: space-around;
-    background: #fff;
-    border-radius: 2rem;
-    padding: 0.5rem;
-    margin-left: 0.3rem; 
-    background: var(--background-color);
-}
+
 .mainlogo{
     margin-left: 1rem;;
     font-size: var(--logo-font-size);
+    font-weight: 900;
     text-align: center;
     color: var(--color-7);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-/* .search-box{
-    background : var(--background-color);
-    width: 11rem;
-    height:  auto; 
-    max-height: 20rem;
-    padding: 1rem;
-    overflow-y: auto; 
-    overflow-x: hidden;
-    position: absolute;
-    top: 4rem;
-    left : 3.3rem;
-    box-shadow:
-  0.6px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-  1.5px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-  2.8px 12.5px 10px rgba(0, 0, 0, 0.035),
-  4.9px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-  9.2px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-  22px 100px 80px rgba(0, 0, 0, 0.07)
-;
-}
-.search{
-    color: var(--color2);
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    margin-left: 1rem; 
-    background: var(--background-color);
-}
-.search:focus{
-    outline: none;
-} */
-.topCenter{
-    flex: 5;
-    margin-left: 2rem;
-}
-.topCenter-inner{
-    /* height: 100%;
-    background: red; */
 }
 
 .topCenter-ul{
@@ -117,16 +66,13 @@
     color: var(--color-7);
     width : var(--icon-size1);
 }
-.topCRight{
-    flex: 4;
-    margin-left: 2rem;
-}
+
 .topRight-inner{
     margin-left: 1rem; 
+    margin-right: 2rem;
     background: var(--background-color-2);
     display: flex;
     height: 3rem;
-    
 }
 .topRight-ul{
     display: flex;
@@ -140,32 +86,19 @@
     padding: var(--icon-li-padding2);
     width: 100%;
     display: grid;
-    place-items: center;
-    
+    place-items: center;   
 }
 .icons2{
     color: var(--color);
-    width : var(--icon-size2);
-    height: var(--icon-size2);
+    width : var(--icon-size);
+    height: var(--icon-size);
     padding: 0.3rem;
     background: var(--background-color);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.5s;
 }
-.icon2-text{
-    display: flex;
-    color: var(--color-alert);
-    font-weight: 900;
-    /* width : var(--icon-size2);
-    height: var(--icon-size2); */
-    /* padding: 0.3rem; */
-    background: var(--background-color);
-    /* border-radius: 50%; */
-    cursor: pointer;
-    /* height: 3rem; */
-    transition: all 0.5s;
-}
+
 .icons2:hover{
     color:#555;
     background: var(--background-color-2);
@@ -207,59 +140,18 @@
     width: 100%;
     padding: 0.5rem
 }
-.notification-link-title{
-    color:var(--color2);
-    text-decoration: none;
-}
-.notification-btn{
-    display: flex;
-    border: none;
-}
-.notification-count{
-    border-radius: 50%;
-    width: 1rem;
-    height: 1rem;
-    font-weight: 600;
-    padding: 0.1rem;
-    color: #fff;
-    background-color: var(--warning-text);
-}
-.notification-box{
-    padding: var(--section-padding);
-    max-height: 15rem;
-    overflow-x: auto;
-}
-.noitification-btn{
-    margin: 0.2rem;
-}
-.notification-link{
-    text-decoration: none;
-    text-transform: capitalize;
-    color: var(--color);
-}
 
-.log-out-btn{
-    color: var(--color-alert);
+.sign-out-btn{
+    color: var(--warning-text);
     text-transform: capitalize;
     font-size: 0.85rem;
     margin: 0 0.4rem;
 }
 
-.log-out-icon{
-    color: var(--color-alert);
+.sign-out-icon{
+    color: var(--warning-text);
 }
 
-.plus-more{
-    font-size: 0.8rem;
-    color: var(--color);
-}
-
-@media screen and (max-width : 940px){
-    .search-box{
-        left: 0rem;
-        width: 100vw
-    }
-}
 
 @media screen and (max-width : 940px){
     .topCenter-inner, .topRight-inner{

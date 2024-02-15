@@ -1,20 +1,15 @@
 import React from 'react';
-import { Snackbar } from '@mui/material';
 import './userprofiling.css'
 import API from '../../Utils/api';
-import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react'
-import {FaExclamationCircle, FaWindowClose} from 'react-icons/fa'
 import Axios from 'axios'
-import {Link, useNavigate} from 'react-router-dom'
 import { UseAppContext } from '../../Contexts/app-context'
 import LoadingIcons from 'react-loading-icons'
-import { Row, Col } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
+import Alert from '@mui/material/Alert';
 
 const UserProfiling =()=>{
-    const {loggedIn, loading, 
-      setCurrentUser, currentUser} = UseAppContext()
+    const {loggedIn, loading} = UseAppContext()
     const {id} = useParams()
     const [userData, setUserData] = useState({})
     const [selectedGender, setSelectedGender] = useState('');
@@ -30,23 +25,10 @@ const UserProfiling =()=>{
         weight : '',
         medicalHistory : ''
     })
-    const navigate = useNavigate()
+    
 
-    //Snackbar Alert start
-   
-  const [open, setOpen] = React.useState(false);
-  
-  const handleError = (status, message) => {
-    setOpen(true);
+  const handleError = (status, message) => {    
     setError({status : status, msg : message})
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
   };
 
   const handleCheckboxChange = (sport) => {
@@ -68,19 +50,6 @@ const UserProfiling =()=>{
     }
   };
 
-  //Snackbar Alert ends
-
-  const setSignupValues =(data)=>{
-    setCurrentUser(data) 
-    // setTransparentLoading(false)
-  }
-
-
-  //close alert box
-//   const closeAlertBox = ()=>{
-//     setAlertMsg(false)
-// }
-
     const setValues =(e)=>{
         let name = e.target.name
         let value = e.target.value
@@ -90,12 +59,6 @@ const UserProfiling =()=>{
         })
     }
 
-     // Enter key to submit
-     const enterClicked =(e)=>{
-        if(e.charCode === 13){
-            submit(e)
-          }
-    }
 
     const handleSelectChange = (e) => {
         setSelectedGender(e.target.value);
@@ -110,11 +73,7 @@ const UserProfiling =()=>{
         if(data){
             setUserData(data)
         }else{
-            // const {message} = result.data
-            // handleError(true, message)
-            // setTimeout(()=>{
-            //     setError({status : false, msg :''})
-            // }, 4000)
+          handleError({status: true, msg: "User information not found"})
         }
     }
 
@@ -146,7 +105,16 @@ const UserProfiling =()=>{
         const {age: storedAge, gender: storedGender, height: storedHeight, 
             weight: storedWeight, medicalHistory: storedMedicalHistory, 
             fitnessLevel :storedFitnessLevel, fitnessGoals: storedFitnessGoals} = userData
-            console.log(selectedSports)
+           
+            if(!age && !height && !weight && !medicalHistory){
+              return handleError(true, "Please fill in your data")
+            }
+            if(!fitnessLevel){
+              return handleError(true, "Please select a fitness level")
+            }
+            if(!weightLossChecked && !muscleGainChecked && !enduranceImprovementChecked && !functionalFitnessChecked ){
+              return handleError(true, "Select one fitness goal")
+            }
             const options = {
                 url: `${API}/user/${id}/profile`,
                 method : "PATCH",
@@ -165,19 +133,10 @@ const UserProfiling =()=>{
                 }
             }
 
-            // setTimeout(()=>{
-            //   setError({status : true, msg :"Please check your network connection"})
-            // },10000)
-            // setTimeout(()=>{
-            //   setError({status : false, msg :""})
-            // },16000)
             const result = await Axios(options)
             const {response} = result.data
             if(response === 'Success'){
-                // setSignupValues(singupdData)
-                return window.location.href = `/record-health-data/${id}`
-                // setAlertMsg({status : true, msg : "Please check your email to verify your account"})
-                
+                return window.location.href = `/record-health-data/${id}`                
             }else if(response === 'Fail'){
                 const {message} = result.data
                 handleError(true, message)
@@ -185,16 +144,11 @@ const UserProfiling =()=>{
                     setError({status : false, msg :''})
                 }, 4000)
             }
-
-          
-        
     }
     
 
-//scroll to top of page
     useEffect(() => {
         window.scrollTo(0, 0)
-        // setTransparentLoading(false)
       }, [])
     
     if(loading){
@@ -206,13 +160,11 @@ const UserProfiling =()=>{
 
 
     return (
-    <Row className='user-profiling' >
-       
+    <div className='user-profiling' >
         <div className='user-profiling-form' xs={12} sm={6} >
-            
             {
-                error.status && <div >alert
-                {/* <Alert severity="error">{error.msg}</Alert> */}
+                error.status && <div >
+                <Alert severity="error">{error.msg}</Alert>
               </div>
             }
 
@@ -232,41 +184,41 @@ const UserProfiling =()=>{
                 <input className='user-profiling-input' value ={formValues.weight}  onChange={setValues} type='number' name='weight' placeholder='Weight'/>
                 <textarea className='user-profiling-input' value ={formValues.medicalHistory}  onChange={setValues} type='text' name='medicalHistory' placeholder='Medical History'></textarea>
                 
-                
                 <h3 className='user-profiling-subtitle'>Select Fitness Level</h3>
-                <label>
+                <label >
                   <input
                     type="radio"
                     value="beginner"
                     checked={fitnessLevel === 'beginner'}
                     onChange={handleFitnessLevelChange}
-                  />
+                    style={{ transform: 'scale(1.3)', marginRight:"0.5rem", marginRight:"0.5rem"}}
+                    className='user-profiling-radio'
+                 />
                   Less than 10 push-ups
                 </label>
-
+                <br/>
                 <label>
                   <input
                     type="radio"
                     value="intermediate"
                     checked={fitnessLevel === 'intermediate'}
                     onChange={handleFitnessLevelChange}
+                    style={{ transform: 'scale(1.3)', marginRight:"0.5rem"}}
                   />
                   10 - 20 push-ups
                 </label>
-
+                <br />
                 <label>
                   <input
                     type="radio"
                     value="advanced"
                     checked={fitnessLevel === 'advanced'}
                     onChange={handleFitnessLevelChange}
+                    style={{ transform: 'scale(1.3)', marginRight:"0.5rem"}}
                   />
                   More than 20 push-ups
                 </label>
-
-                
-                
-                
+                <br /><br />
                 <h3 className='user-profiling-subtitle'>Fitness Goals</h3>
                 <label>
                     <input
@@ -274,7 +226,8 @@ const UserProfiling =()=>{
                     checked={weightLossChecked}
                     onChange={() => handleCheckboxChange('weightLoss')}
                     value="weightLoss"
-                    />
+                    style={{transform: 'scale(1.3)', marginRight:"0.5rem"}}
+                   />
                     <span className='user-profiling-checkbox'>Weight Loss</span>
                 </label>
                 <br/>
@@ -284,6 +237,7 @@ const UserProfiling =()=>{
                     checked={muscleGainChecked}
                     onChange={() => handleCheckboxChange('muscleGain')}
                     value="muscleGain"
+                    style={{transform: 'scale(1.3)', marginRight:"0.5rem"}}
                     />
                     <span className='user-profiling-checkbox'>Muscle Gain</span>
                 </label>
@@ -294,6 +248,7 @@ const UserProfiling =()=>{
                     checked={enduranceImprovementChecked}
                     onChange={() => handleCheckboxChange('enduranceImprovement')}
                     value="enduranceImprovement"
+                    style={{transform: 'scale(1.3)', marginRight:"0.5rem"}}
                     />
                     <span className='user-profiling-checkbox'>Endurance Improvement</span>
                 </label>
@@ -304,16 +259,17 @@ const UserProfiling =()=>{
                     checked={functionalFitnessChecked}
                     onChange={() => handleCheckboxChange('functionalFitness')}
                     value="functionalFitness"
+                    style={{transform: 'scale(1.3)', marginRight:"0.5rem"}}
                     />
                     <span className='user-profiling-checkbox'>Functional Fitness</span>
                 </label>
                 
               <div className='user-profiling-btns'>
-                <span className='user-profiling-btn2' onClick={submit}>Save and continue</span>
+                <span className='user-profiling-btn' onClick={submit}>Save and continue</span>
               </div>
             </div>
         </div>
-    </Row>
+    </div>
 )}
 
 export default UserProfiling

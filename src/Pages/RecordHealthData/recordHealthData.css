@@ -1,42 +1,29 @@
 .user-health-data{
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    max-height: auto;
+    min-width: 100vw;
+    max-width: auto;
     box-sizing: border-box;
-     display: grid;
-    /*padding: var(--page-padding);
-    background: var(--background-color); */
-      position: relative;
-      flex: 1;
-      overflow: hidden;
+    display: grid;
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: var(--background-color-8);
 }
 
-.user-health-data::before{
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: var(--background-gradient);
-      clip-path: polygon(100% 0, 0 0, 0 100%);
-      z-index: 1;
-}
 .user-health-data-heading{
     margin: 2rem auto;
+    font-weight: var(--font-weight);
 }
+
 .user-health-data-form{
     display: grid;
-    padding-top: var(--page-padding);
     align-items: center;
     justify-content: center;
-    height: 100%;
-}
-.user-health-data-form{
     padding: var(--page-padding);
     box-sizing: border-box;
     background: var(--background-color);
     max-width: 30rem;
-    width: 25rem;
     overflow: auto;
     margin: 0 auto;
     box-shadow:
@@ -57,18 +44,18 @@
     width: 100%;
     box-sizing: border-box;
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: var(--font-weight);
     color: var(--input-color);
     background: var(--input-background);
 }
 .user-health-data-input:focus{
     color: var(--input-color-active);
     outline: none;
-    /* border: none; */
 }
 
 .user-health-data-title{
     font-size: var(--page-title2); 
+    font-weight: var(--font-weight);
     text-align: center;
     color: var(--color4); 
 }
@@ -86,22 +73,6 @@
     font-size: var(--small-font1);
 }
 
-.errorNotice{
-    display: flex;
-    position: absolute;
-    border: var(--error-border);
-    font-size: var(--error-font-size);
-    top: 40%;
-    width: var(--error-width);
-    height: var(--error-height);
-    background: var(--error-background);
-    color: var(--error-color);
-    box-shadow: var(--error-shadow);
-    text-align: center;
-    padding: var(--error-padding);
-    justify-content: center;
-    align-items: center;
-}
 .user-health-data-btns{
     margin-top: 1rem;
 }

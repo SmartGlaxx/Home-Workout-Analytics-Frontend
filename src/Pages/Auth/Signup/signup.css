@@ -1,21 +1,16 @@
 .signup{
     display: grid;
     padding: var(--page-padding);
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    max-height: auto;
+    min-width: 100vw;
+    max-width: auto;
     box-sizing: border-box;
-    background: var(--background-gradient);
+    position: relative;
+    background: var(--background-color-8);
 }
 .signup-heading{
     margin: 2rem auto;
-}
-.signup-form{
-    display: grid;
-    padding-top: var(--page-padding);
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    
 }
 .signup-form{
     padding: var(--page-padding);
@@ -24,6 +19,7 @@
     max-width: 30rem;
     overflow: auto;
     margin: 0 auto;
+    position: relative;
     box-shadow:
     0.6px 2.8px 2.2px rgba(0, 0, 0, 0.056),
     1.5px 6.7px 5.3px rgba(0, 0, 0, 0.081),
@@ -39,55 +35,37 @@
     border: 1px solid var(--background-color-8);
     width: auto;
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: var(--font-weight);
     color: var(--input-color);
     background: var(--input-background);
 }
 .signup-input:focus{
     color: var(--input-color-active);
     outline: none;
-    /* border: none; */
 }
 .title{
-    font-size: var(--page-title1);
-    font-weight: 600;
-    /* color: var(--color2); */
+    font-size: var(--page-title2);
+    font-weight: var(--font-weight);
+    color: var(--color);
 }
-.btn{
-    float:right;
-}
+
 .sign-up-title{
     font-size: var(--page-title2); 
+    font-weight: var(--font-weight);
     text-align: center;
-    color: var(--color2);
-    
+    color: var(--color2);  
 }
 .signup{
     font-size: var(--small-font1);
 }
 
-.errorNotice{
-    display: flex;
-    position: absolute;
-    border: var(--error-border);
-    font-size: var(--error-font-size);
-    top: 40%;
-    width: var(--error-width);
-    height: var(--error-height);
-    background: var(--error-background);
-    color: var(--error-color);
-    box-shadow: var(--error-shadow);
-    text-align: center;
-    padding: var(--error-padding);
-    justify-content: center;
-    align-items: center;
-}
 .auth-btns{
     margin-top: 1rem;
 }
 .auth-signup-btn{
     cursor: pointer;
     font-size: 1rem;
+    font-weight: var(--font-weight);
     color: var(--color-8);
     text-decoration: none;
     border: 1px solid none;
@@ -98,28 +76,28 @@
     color: var(--color4);
     opacity: 1rem;
 }
-.auth-signup-btn1{
-    cursor: pointer;
-    float : left;
-    font-size: 1rem;
-    color: var(--color3);
-    text-decoration: none;
-    border: 1px solid none;
-    padding: var(--btn-padding);
-    border-radius: var(--btn-border-radius);
 
-}
-.auth-signup-btn2{
+.auth-signup-btn-main{
     cursor: pointer;
     float : right;
     font-size: 1rem;
+    font-weight: var(--font-weight);
     color: var(--color3);
     text-decoration: none;
     border: 1px solid var(--color3);
     padding: var(--btn-padding);
     background: var(--btn-background);
     border-radius: var(--btn-border-radius);
+    color: var(--color);
 }
+
+.alert{
+    width: 30rem;
+    top: 4rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @media screen and (max-width : 600px){
     .signup-heading{
         height: auto;
@@ -131,7 +109,7 @@
     }
     .signup-input{
         font-size: 1.03rem;
-        font-weight: 500;
+        font-weight: var(--font-weight);
         padding: var(--input-padding3);
         width: auto;
         margin: 1rem 0

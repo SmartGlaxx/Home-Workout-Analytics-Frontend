@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import Axios from 'axios'
+import { UseAppContext } from '../../Contexts/app-context';
 import API from '../../Utils/api';
 import "./healthReport.css"
 import {
@@ -13,7 +13,7 @@ import {
   Title,
   CategoryScale,
 } from 'chart.js';
-import { Col, Row } from 'react-bootstrap';
+import { Backdrop, Sidebar, Topbar } from '../../Components';
 
 Chart.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale);
 
@@ -22,7 +22,8 @@ const HealthReport = () => {
     const [diastolicPressure, setDiastolicPressure] = useState([]);
     const [restingHeartRate, setRestingHeartRate] = useState([]);
     const [error, setError] = useState({status: false, msg :''})
-    const {id} = useParams()
+    const {currentUserParsed} = UseAppContext()
+    const {id} = currentUserParsed
 
 
     const fetchHealthData = async()=>{
@@ -177,7 +178,10 @@ const HealthReport = () => {
 
   
 
-  return (
+  return (<>
+    <Topbar />
+    <Sidebar />
+    <Backdrop />
     <div className='health-report' >
       <div className="chart-container">
         <div className="header">Systolic Pressure Chart</div>
@@ -192,7 +196,7 @@ const HealthReport = () => {
         {restingHeartRate && <RestingHeartRateChart data={restingHeartRate} />}
       </div>
     </div>
-  );
+    </>);
 };
 
 export default HealthReport;
